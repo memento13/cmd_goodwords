@@ -1,5 +1,8 @@
 import random
-f = open("C:\goodwords\sentence.txt","r",encoding='utf-8')
+import os
+
+path = os.path.dirname( os.path.abspath( __file__ ) )
+f = open(path+"\\sentence.txt","r",encoding='utf-8')
 
 # 문장구분용 %
 flag = True
