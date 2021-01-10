@@ -7,7 +7,8 @@ flag = True
 savemode = False
 # 첫번째줄 확인여부
 first = True
-
+# 현재 문장번호
+nowNum = 0
 
 while True:
     # 파일 첫 문장에 있는 총 명언의 갯수 = total
@@ -30,23 +31,15 @@ while True:
     # %이 있으면 새로운 문장 시작 및 기존문장의 끝
     if line[0] == '%':
         flag = True
+        nowNum+=1
         # savemode = True 인경우 출력해야하는 문장임으로 더이상 탐색할필요 없이 반복문 빠져나옴
         if savemode:
             break
         continue
 
     if flag:
-        # 현재 문장의 번호 = now
-        now = ''
-        for i in line:
-            # . 으로 문장번호 추출
-            if i=='.':
-                break
-            now+=i
-        # 현재 문장번호
-        now = int(now)
         # 현재 문장번호랑 앞에서 랜덤으로 뽑아둔 번호랑 같은경우 savemode = True
-        if now==lottory_num:
+        if nowNum==lottory_num:
             savemode = True
         flag = False
     # 출력해야하는 문장이기때문에 문장 result에 저장
